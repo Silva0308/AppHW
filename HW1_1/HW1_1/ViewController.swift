@@ -8,13 +8,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let image: UIImageView = {
+    private let image: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "person"))
         imageView.backgroundColor = .blue
         return imageView
     }()
     
-    let label: UILabel = {
+    private let label: UILabel = {
             let label = UILabel()
             label.numberOfLines = 0
             label.text = "Авторизация"
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
             label.textColor = .black
             return label
         }()
-    let field: UITextField = {
+    private let field: UITextField = {
      let field = UITextField()
         field.text = "Логин"
         field.textAlignment = .center
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         return field
     }()
     
-    let field2: UITextField = {
+    private let field2: UITextField = {
      let field = UITextField()
         field.text = "Пароль"
         field.textAlignment = .center
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         return field
     }()
     
-    let button: UIButton = {
+    private let button: UIButton = {
             let button = UIButton()
             button.setTitle("Войти", for: .normal)
             button.backgroundColor = .blue
@@ -60,10 +60,11 @@ class ViewController: UIViewController {
         view.addSubview(field)
         view.addSubview(field2)
         view.addSubview(button)
+        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
         setConstraint()
     }
     
-    func setConstraint(){
+    private func setConstraint(){
         image.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -98,5 +99,33 @@ class ViewController: UIViewController {
         ])
     }
 
+    
+    @objc func tap() {
+  
+               let tab1 = UINavigationController(rootViewController: FriendViewController())
+               let tab2 = UINavigationController(rootViewController: GroupsViewController())
+        let tab3 = UINavigationController(rootViewController: UINavigationController(rootViewController: PhotoController(collectionViewLayout: UICollectionViewFlowLayout()))
+)
+
+           
+               tab1.tabBarItem.title = "Friends"
+               tab2.tabBarItem.title = "Groups"
+               tab3.tabBarItem.title = "Photos"
+
+            
+               let controllers = [tab1, tab2, tab3]
+
+               let tabBarController = UITabBarController()
+               tabBarController.viewControllers = controllers
+               
+               guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                     let firstWindow = firstScene.windows.first else {
+                   return
+               }
+
+               
+               firstWindow.rootViewController =  tabBarController
+        
+    }
 }
 
