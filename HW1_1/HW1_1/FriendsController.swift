@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class FriendViewController : UITableViewController{
+class FriendsController : UITableViewController{
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }

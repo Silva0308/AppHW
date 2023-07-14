@@ -102,10 +102,10 @@ class ViewController: UIViewController {
     
     @objc func tap() {
   
-               let tab1 = UINavigationController(rootViewController: FriendViewController())
-               let tab2 = UINavigationController(rootViewController: GroupsViewController())
-        let tab3 = UINavigationController(rootViewController: UINavigationController(rootViewController: PhotoController(collectionViewLayout: UICollectionViewFlowLayout()))
-)
+               let tab1 = UINavigationController(rootViewController: FriendsController())
+               let tab2 = UINavigationController(rootViewController: GroupsController())
+               let tab3 = UINavigationController(rootViewController: PhotoController(collectionViewLayout: UICollectionViewFlowLayout()))
+
 
            
                tab1.tabBarItem.title = "Friends"

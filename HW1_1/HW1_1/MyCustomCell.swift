@@ -7,16 +7,14 @@
 
 import UIKit
 
-final class CustomCollectionViewCell: UICollectionViewCell {
+final class MyCustomCell: UICollectionViewCell {
     
     var tap: ((UIImage) -> Void)?
-    private var imageView = UIImageView(image: UIImage(systemName: "person"))
+    private var imageView = UIImageView(image: UIImage(named:"logo"))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(cellTap))
-        addGestureRecognizer(recognizer)
     }
     
     required init?(coder: NSCoder) {
@@ -36,9 +34,5 @@ final class CustomCollectionViewCell: UICollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-    }
-    
-    @objc func cellTap() {
-        tap?(imageView.image ?? UIImage())
     }
 }
