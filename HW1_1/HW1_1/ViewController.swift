@@ -4,103 +4,33 @@
 //
 //  Created by MacBook Pro on 08/07/23.
 //
-
+import WebKit
 import UIKit
 
+
 class ViewController: UIViewController {
-    private let image: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "person"))
-        imageView.backgroundColor = .blue
-        return imageView
+    private lazy var webView: WKWebView = {
+        let webView = WKWebView(frame: view.bounds)
+        webView.navigationDelegate = self
+        return webView
     }()
-    
-    private let label: UILabel = {
-            let label = UILabel()
-            label.numberOfLines = 0
-            label.text = "Авторизация"
-            label.textAlignment = .center
-            label.backgroundColor = .red
-            label.textColor = .black
-            return label
-        }()
-    private let field: UITextField = {
-     let field = UITextField()
-        field.text = "Логин"
-        field.textAlignment = .center
-        field.textColor = .cyan
-        field.borderStyle = .roundedRect
-        field.backgroundColor = .gray
-        return field
-    }()
-    
-    private let field2: UITextField = {
-     let field = UITextField()
-        field.text = "Пароль"
-        field.textAlignment = .center
-        field.textColor = .cyan
-        field.borderStyle = .roundedRect
-        field.backgroundColor = .gray
-        return field
-    }()
-    
-    private let button: UIButton = {
-            let button = UIButton()
-            button.setTitle("Войти", for: .normal)
-            button.backgroundColor = .blue
-            button.setTitleColor(.white, for: .normal)
-            button.setTitleColor(.green, for: .highlighted)
-            return button
-        }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(image)
-        view.addSubview(label)
-        view.addSubview(field)
-        view.addSubview(field2)
-        view.addSubview(button)
-        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
-        setConstraint()
+        setupViews()
+        
+        let url = URL(string:"https://oauth.vk.com/authorize?client_id=51708148&redirect_uri= https://oauth.vk.com/blank.html&scope=262150&display=mobile&response_type=token")
+        webView.load(URLRequest(url: url!))
+
     }
     
-    private func setConstraint(){
-        image.translatesAutoresizingMaskIntoConstraints = false
-        label.translatesAutoresizingMaskIntoConstraints = false
-        field.translatesAutoresizingMaskIntoConstraints = false
-        field2.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            image.widthAnchor.constraint(equalToConstant: view.frame.size.width/2),
-            image.heightAnchor.constraint(equalToConstant: view.frame.size.height/5),
-            
-            label.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 5),
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.widthAnchor.constraint(equalToConstant: view.frame.size.width),
-            label.heightAnchor.constraint(equalToConstant: view.frame.size.height/10),
-            
-            field.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 5),
-            field.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            field.widthAnchor.constraint(equalToConstant: view.frame.size.width/2),
-            field.heightAnchor.constraint(equalToConstant: view.frame.size.height/10),
-            
-            field2.topAnchor.constraint(equalTo: field.bottomAnchor, constant: 5),
-            field2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            field2.widthAnchor.constraint(equalToConstant: view.frame.size.width/2),
-            field2.heightAnchor.constraint(equalToConstant: view.frame.size.height/10),
-            
-            button.topAnchor.constraint(equalTo: field2.bottomAnchor, constant: 5),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.widthAnchor.constraint(equalToConstant: view.frame.size.width/2),
-            button.heightAnchor.constraint(equalToConstant: view.frame.size.height/8),
-        ])
+    private func setupViews(){
+        view.addSubview(webView)
     }
 
     
-    @objc func tap() {
+    func tap() {
   
                let tab1 = UINavigationController(rootViewController: FriendsController())
                let tab2 = UINavigationController(rootViewController: GroupsController())
@@ -126,6 +56,31 @@ class ViewController: UIViewController {
                
                firstWindow.rootViewController =  tabBarController
         
+    }
+extension ViewController: WKNavigationDelegate {
+        func webView(_ webView: WKWebView, decidePolicyFor navigationResponce:
+                     WKNavigationResponse, decisionHandler: @escaping
+                     (WKNavigationResponsePolicy) -> Void) {
+            guard let url = navigationResponce.response.url, url.path == "/blank.html", let fragment = url.fragment else {
+                decisionHandler(.allow)
+                return
+            }
+            let param = fragment
+                .components(separatedBy: "&")
+                .map { $0.components(separatedBy: "=")}
+                .reduce([String: String]()){ result, param in
+                    var dict = result
+                    let key = param[0]
+                    let value = param[1]
+                    dict[key] = value
+                    return dict
+                }
+            NetworkService.token = param["acces_token"]
+            NetworkService.userId = param["user_id"]
+            decisionHandler(.cancel)
+            webView.removeFromSuperview()
+            tap()
+        }
     }
 }
 
