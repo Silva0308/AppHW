@@ -75,23 +75,47 @@
 			isa = PBXGroup;
 			children = (
 				52121D292A591B5F00300A60 /* AppDelegate.swift */,
-				524CC98E2A5EF66C00F97E73 /* PhotoController.swift */,
-				524CC98A2A5EDA8400F97E73 /* FriendsController.swift */,
+				52121D2D2A591B5F00300A60 /* ViewController.swift */,
 				524CC9A62A68478400F97E73 /* NetworkService.swift */,
 				52121D2B2A591B5F00300A60 /* SceneDelegate.swift */,
-				52121D2D2A591B5F00300A60 /* ViewController.swift */,
-				524CC9A82A6863D400F97E73 /* FriendsModel.swift */,
-				524CC9982A60712500F97E73 /* MyCustomCell.swift */,
-				524CC98C2A5EDABE00F97E73 /* CustomCell.swift */,
-				524CC9962A5F2C0300F97E73 /* CustomCell1.swift */,
-				524CC9AA2A687C9600F97E73 /* GroupsModel.swift */,
-				524CC9AC2A687EF600F97E73 /* PhotosModel.swift */,
-				524CC9942A5F242900F97E73 /* GroupsController.swift */,
+				524CC9B22A6D62FD00F97E73 /* Custom cells */,
+				524CC9B12A6D62D700F97E73 /* Controllers */,
+				524CC9B02A6D62B900F97E73 /* Models */,
 				52121D322A591B5F00300A60 /* Assets.xcassets */,
 				52121D342A591B5F00300A60 /* LaunchScreen.storyboard */,
 				52121D372A591B5F00300A60 /* Info.plist */,
 			);
 			path = HW1_1;
+			sourceTree = "<group>";
+		};
+		524CC9B02A6D62B900F97E73 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				524CC9A82A6863D400F97E73 /* FriendsModel.swift */,
+				524CC9AC2A687EF600F97E73 /* PhotosModel.swift */,
+				524CC9AA2A687C9600F97E73 /* GroupsModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		524CC9B12A6D62D700F97E73 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				524CC98E2A5EF66C00F97E73 /* PhotoController.swift */,
+				524CC98A2A5EDA8400F97E73 /* FriendsController.swift */,
+				524CC9942A5F242900F97E73 /* GroupsController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		524CC9B22A6D62FD00F97E73 /* Custom cells */ = {
+			isa = PBXGroup;
+			children = (
+				524CC98C2A5EDABE00F97E73 /* CustomCell.swift */,
+				524CC9982A60712500F97E73 /* MyCustomCell.swift */,
+				524CC9962A5F2C0300F97E73 /* CustomCell1.swift */,
+			);
+			name = "Custom cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
