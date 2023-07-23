@@ -20,8 +20,11 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         
-        let url = URL(string:"https://oauth.vk.com/authorize?client_id=51708148&redirect_uri= https://oauth.vk.com/blank.html&scope=262150&display=mobile&response_type=token")
-        webView.load(URLRequest(url: url!))
+        let url = URL(string:"https://oauth.vk.com/authorize?client_id=51710555&redirect_uri= https://oauth.vk.com/blank.html&scope=262150&display=mobile&response_type=token")
+        guard let url else{
+            return
+        }
+        webView.load(URLRequest(url: url))
 
     }
     
@@ -57,6 +60,11 @@ class ViewController: UIViewController {
                firstWindow.rootViewController =  tabBarController
         
     }
+   
+    
+    }
+
+
 extension ViewController: WKNavigationDelegate {
         func webView(_ webView: WKWebView, decidePolicyFor navigationResponce:
                      WKNavigationResponse, decisionHandler: @escaping
@@ -82,5 +90,3 @@ extension ViewController: WKNavigationDelegate {
             tap()
         }
     }
-}
-
