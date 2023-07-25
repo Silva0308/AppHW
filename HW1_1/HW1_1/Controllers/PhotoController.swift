@@ -14,13 +14,13 @@ class PhotoController:UICollectionViewController {
         super.viewDidLoad()
         title = "Photos"
 //        collectionView.backgroundColor = .white
-        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: Constants.Identifier.photoCellIdentifier)
-        networkService.getPhotos([weak self] photos in self?.models = photos
-                DispatchQueue.main.async {
-                self?.tableView.reloadData()
-                                 }
-                                 
-        )
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "Photos")
+        networkService.getPhotos{[weak self] photos in
+                    self?.models = photos
+                    DispatchQueue.main.async {
+                        self?.collectionView.reloadData()
+                    }
+                }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -28,7 +28,7 @@ class PhotoController:UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Identifier.photoCellIdentifier, for: indexPath) as? PhotoCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Photos", for: indexPath) as? PhotoCell else {
             return UICollectionViewCell()
         }
         let model = models[indexPath.row]
