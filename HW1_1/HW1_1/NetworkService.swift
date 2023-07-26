@@ -13,7 +13,7 @@ final class NetworkService {
     
     func getFriends(completion: @escaping(([Friend]) -> Void))
     {
-        guard let url = URL(string: "https://api.vk.com/method/friends.get?fields=photo_50,online&access_token=\(String(describing: NetworkService.token))&v=5.131")
+        guard let url = URL(string: "https://api.vk.com/method/friends.get?fields=photo_50,online&access_token=" + (NetworkService.token ?? "") + "&v=5.131")
         else {
             return
         }
@@ -31,7 +31,7 @@ final class NetworkService {
         }.resume()
     }
     func getGroups(completion: @escaping (([Group]) -> Void)) {
-        guard let url = URL(string: "https://api.vk.com/method/groups.get?access_token\(String(describing: NetworkService.token))&fields=description&v=5.131&extended=1") else {
+        guard let url = URL(string: "https://api.vk.com/method/groups.get?access_token" + (NetworkService.token ?? "") + "&fields=description&extended=1&v=5.131") else {
             return
         }
         
@@ -50,7 +50,7 @@ final class NetworkService {
     }
     
     func getPhotos(completion: @escaping(([Photo]) -> Void)) {
-        guard let url = URL(string: "https://api.vk.com/method/photos.get?fields=bdate&access_token=\(String(describing: NetworkService.token))&v=5.131&album_id=profile") else {
+        guard let url = URL(string: "https://api.vk.com/method/photos.get?fields=bdate&access_token=" + (NetworkService.token ?? "") + "&v=5.131&album_id=profile") else {
             return
         }
         session.dataTask(with: url) { (data, _, error) in
