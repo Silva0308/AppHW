@@ -83,7 +83,7 @@ extension ViewController: WKNavigationDelegate {
                     dict[key] = value
                     return dict
                 }
-            NetworkService.token = param["acces_token"]
+            NetworkService.token = param["access_token"]
             NetworkService.userId = param["user_id"]
             decisionHandler(.cancel)
             webView.removeFromSuperview()
