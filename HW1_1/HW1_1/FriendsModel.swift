@@ -19,9 +19,9 @@ struct Friend: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case id
-        case firstName = "first_name"
+        case firstName = "first_name" //следить, чтобы были правильные ключи
         case lastName = "last_name"
-        case photo = "photo"
+        case photo = "photo_50"
         case online
     }
 }

@@ -24,14 +24,14 @@ final class NetworkService {
             do{
                 let friends = try JSONDecoder().decode(FriendsModel.self, from: data)
                 completion(friends.response.items)
-                print(friends)
+                print(friends) //выводим в консоль
             } catch {
                 print(error)
             }
         }.resume()
     }
     func getGroups(completion: @escaping (([Group]) -> Void)) {
-        guard let url = URL(string: "https://api.vk.com/method/groups.get?access_token" + (NetworkService.token ?? "") + "&fields=description&extended=1&v=5.131") else {
+        guard let url = URL(string: "https://api.vk.com/method/groups.get?access_token=" + (NetworkService.token ?? "") + "&fields=description&v=5.131&extended=1") else {
             return
         }
         
@@ -64,6 +64,6 @@ final class NetworkService {
             catch {
                 print(error)
             }
-        }
+        }.resume() //обязательно, иначе не заработает
     }
 }
