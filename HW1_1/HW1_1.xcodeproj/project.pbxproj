@@ -13,11 +13,11 @@
 		52121D332A591B5F00300A60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52121D322A591B5F00300A60 /* Assets.xcassets */; };
 		52121D362A591B5F00300A60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52121D342A591B5F00300A60 /* LaunchScreen.storyboard */; };
 		524CC98B2A5EDA8400F97E73 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC98A2A5EDA8400F97E73 /* FriendsController.swift */; };
-		524CC98D2A5EDABE00F97E73 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC98C2A5EDABE00F97E73 /* CustomCell.swift */; };
+		524CC98D2A5EDABE00F97E73 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC98C2A5EDABE00F97E73 /* FriendCell.swift */; };
 		524CC98F2A5EF66C00F97E73 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC98E2A5EF66C00F97E73 /* PhotoController.swift */; };
 		524CC9952A5F242900F97E73 /* GroupsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9942A5F242900F97E73 /* GroupsController.swift */; };
-		524CC9972A5F2C0300F97E73 /* CustomCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9962A5F2C0300F97E73 /* CustomCell1.swift */; };
-		524CC9992A60712500F97E73 /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9982A60712500F97E73 /* MyCustomCell.swift */; };
+		524CC9972A5F2C0300F97E73 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9962A5F2C0300F97E73 /* GroupCell.swift */; };
+		524CC9992A60712500F97E73 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9982A60712500F97E73 /* PhotoCell.swift */; };
 		524CC9A72A68478400F97E73 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9A62A68478400F97E73 /* NetworkService.swift */; };
 		524CC9A92A6863D400F97E73 /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9A82A6863D400F97E73 /* FriendsModel.swift */; };
 		524CC9AB2A687C9600F97E73 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9AA2A687C9600F97E73 /* GroupsModel.swift */; };
@@ -33,11 +33,11 @@
 		52121D352A591B5F00300A60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52121D372A591B5F00300A60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		524CC98A2A5EDA8400F97E73 /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
-		524CC98C2A5EDABE00F97E73 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		524CC98C2A5EDABE00F97E73 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		524CC98E2A5EF66C00F97E73 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		524CC9942A5F242900F97E73 /* GroupsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsController.swift; sourceTree = "<group>"; };
-		524CC9962A5F2C0300F97E73 /* CustomCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell1.swift; sourceTree = "<group>"; };
-		524CC9982A60712500F97E73 /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
+		524CC9962A5F2C0300F97E73 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		524CC9982A60712500F97E73 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		524CC9A62A68478400F97E73 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		524CC9A82A6863D400F97E73 /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
 		524CC9AA2A687C9600F97E73 /* GroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsModel.swift; sourceTree = "<group>"; };
@@ -111,9 +111,9 @@
 		524CC9B22A6D62FD00F97E73 /* Custom cells */ = {
 			isa = PBXGroup;
 			children = (
-				524CC98C2A5EDABE00F97E73 /* CustomCell.swift */,
-				524CC9982A60712500F97E73 /* MyCustomCell.swift */,
-				524CC9962A5F2C0300F97E73 /* CustomCell1.swift */,
+				524CC98C2A5EDABE00F97E73 /* FriendCell.swift */,
+				524CC9982A60712500F97E73 /* PhotoCell.swift */,
+				524CC9962A5F2C0300F97E73 /* GroupCell.swift */,
 			);
 			name = "Custom cells";
 			sourceTree = "<group>";
@@ -191,15 +191,15 @@
 				524CC9A72A68478400F97E73 /* NetworkService.swift in Sources */,
 				524CC9A92A6863D400F97E73 /* FriendsModel.swift in Sources */,
 				52121D2E2A591B5F00300A60 /* ViewController.swift in Sources */,
-				524CC9992A60712500F97E73 /* MyCustomCell.swift in Sources */,
+				524CC9992A60712500F97E73 /* PhotoCell.swift in Sources */,
 				524CC9952A5F242900F97E73 /* GroupsController.swift in Sources */,
-				524CC9972A5F2C0300F97E73 /* CustomCell1.swift in Sources */,
+				524CC9972A5F2C0300F97E73 /* GroupCell.swift in Sources */,
 				52121D2A2A591B5F00300A60 /* AppDelegate.swift in Sources */,
 				524CC98F2A5EF66C00F97E73 /* PhotoController.swift in Sources */,
 				524CC9AD2A687EF600F97E73 /* PhotosModel.swift in Sources */,
 				524CC98B2A5EDA8400F97E73 /* FriendsController.swift in Sources */,
 				524CC9AB2A687C9600F97E73 /* GroupsModel.swift in Sources */,
-				524CC98D2A5EDABE00F97E73 /* CustomCell.swift in Sources */,
+				524CC98D2A5EDABE00F97E73 /* FriendCell.swift in Sources */,
 				52121D2C2A591B5F00300A60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
