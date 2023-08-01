@@ -14,8 +14,15 @@ struct ContentView: View {
     var body: some View {
         List(news) { news in
             VStack {
-            Text(Helper.getDate(date: news.date)).font(.body).fontWeight(.light)
-            Text(news.title).font(.title).fontWeight(.heavy)
+                Text(Helper.getDate(date: news.date))
+                    .font(.body)
+                    .fontWeight(.light)
+                    .foregroundColor(Color.red)
+                Text(news.title)
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color.black)
+                
         }
         }
         .onAppear{

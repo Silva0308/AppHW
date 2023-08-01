@@ -13,7 +13,7 @@ struct NewsModel: Decodable {
 struct News: Decodable, Identifiable {
         var id: Int
         var date: Double
-        var tile: String
+        var title: String
         enum CodingKeys: String, CodingKey {
             case id
             case date = "publication_date"
