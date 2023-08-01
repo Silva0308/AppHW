@@ -6,12 +6,13 @@
 //
 
 import Foundation
+
 final class NetworkService {
     private let session = URLSession.shared
     static var token: String? = ""
     static var userId: String? = ""
     
-    func getFriends(completion: @escaping(([Friend]) -> Void))
+    func getFriends(completion: @escaping(Result<[Friend], Error>) -> Void)
     {
         guard let url = URL(string: "https://api.vk.com/method/friends.get?fields=photo_50,online&access_token=" + (NetworkService.token ?? "") + "&v=5.131")
         else {
@@ -19,14 +20,19 @@ final class NetworkService {
         }
         session.dataTask(with: url) { (data, _, error) in
             guard let data = data else {
+                completion(.failure(Error.self as! Error))
+                return
+            }
+            if let error = error{
+                completion(.failure(error))
                 return
             }
             do{
                 let friends = try JSONDecoder().decode(FriendsModel.self, from: data)
-                completion(friends.response.items)
-                print(friends) //выводим в консоль
+                completion(.success(friends.response.items))
+//                print(friends) //выводим в консоль
             } catch {
-                print(error)
+                completion(.failure(error))
             }
         }.resume()
     }

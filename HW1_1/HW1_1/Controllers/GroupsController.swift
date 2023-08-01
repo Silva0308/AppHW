@@ -13,8 +13,8 @@ class GroupsController : UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Groups"
-        view.backgroundColor = .white
-        tableView.backgroundColor = .white
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
         tableView.register(GroupCell.self, forCellReuseIdentifier: "GroupCell")

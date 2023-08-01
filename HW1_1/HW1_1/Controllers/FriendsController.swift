@@ -7,30 +7,34 @@
 
 import UIKit
 class FriendsController : UITableViewController{
+    
     private let networkService = NetworkService()
     private var models: [Friend] = []
+    private var fileCache = FileCache()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //models = fileCache.fetchFriends()
-        //tableView.reloadData()
+        models = fileCache.fetchFriends()
+        tableView.reloadData()
         title = "Friends"
-        view.backgroundColor = .white // Theme.currentTheme.backgroundColor
-        tableView.backgroundColor = .white //// Theme.currentTheme.backgroundColor
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "person"), style: .plain, target: self, action: #selector(tap))
         tableView.register(FriendCell.self, forCellReuseIdentifier: "FriendCell")
-//        refreshControl = UIRefreshControl
+        refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(update), for: .valueChanged)
-//        networkService.getFriends{ [weak self] friends in self?.models = friends
-            DispatchQueue.main.async {
-//                self?.tableView.reloadData()
-            }
+        getFriends()
         }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.reloadData()
     }
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        1
-//    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         models.count
     }
@@ -41,27 +45,62 @@ class FriendsController : UITableViewController{
         }
         let model = models[indexPath.row]
         cell.updateCell(model: model)
+        cell.tap = { [weak self]  text, photo in self?.navigationController?.pushViewController(ProfileController(name: text, photo: photo, isUserProfile: false), animated: true)}
         return cell
     }
-
+    func getFriends() {
+        networkService.getFriends { [weak self] result
+            in
+            switch result {
+            case .success(let friends):
+                self?.models = friends
+                self?.fileCache.addFriends(friends: friends)
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            case .failure(_):
+                self?.models = self?.fileCache.fetchFriends() ?? []
+                DispatchQueue.main.async {
+                    self?.showAlert()
+                }
+            }
+        }
+    }
+}
 
 private extension FriendsController {
+    func showAlert(){
+        let date = DateHelper.getDate(date: fileCache.fetchFriendDate())
+        let alert = UIAlertController(title: "Проблема с получением данных", message: "Данные актуальны на\(date)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     @objc func tap() {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         animation.type = .moveIn
         animation.duration = 3
         navigationController?.view.layer.add(animation, forKey: nil)
-        navigationController?.pushViewController(ProfileController(), animated: false) //добить в скобках!
+        navigationController?.pushViewController(ProfileController(isUserProfile: true), animated: false)
     }
     
     @objc func update() {
-        networkService.getFriends([weak self] result in switch result {
+        networkService.getFriends{ [weak self] result in switch result {
         case .success(let friends):
             self?.models = friends
             self?.fileCache.addFriends(friends: friends)
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
-        })
+        case .failure(_):
+            self?.models = self?.fileCache.fetchFriends() ?? []
+            DispatchQueue.main.async {
+                self?.showAlert()
+            }
+        }
+            DispatchQueue.main.async {
+                self?.refreshControl?.endRefreshing()
+            }
+        }
+    }
 }

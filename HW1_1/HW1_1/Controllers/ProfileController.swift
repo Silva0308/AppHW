@@ -13,12 +13,12 @@ final class ProfileController: UIViewController {
     
     private var nameLabel: UILabel = {
         var label = UILabel()
-        // label.textColor = Theme.currentTheme.textColor
+        label.textColor = Theme.currentTheme.textColor
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
-    // private var themeView = ThemeView()
+    private var themeView = ThemeView()
     private var isUserProfile: Bool
     
     init(name: String? = nil, photo: UIImage? = nil, isUserProfile: Bool) {
@@ -26,7 +26,7 @@ final class ProfileController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         nameLabel.text = name
         profileImageView.image = photo
-//        themeView.delegate = self
+        themeView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -35,7 +35,7 @@ final class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white // Theme.currentTheme.backgroundColor
+        view.backgroundColor = Theme.currentTheme.backgroundColor
         setupViews()
         if isUserProfile {
             networkService.getProfileInfo{ [weak self] user in self?.updateData(model: user)}
@@ -62,14 +62,14 @@ final class ProfileController: UIViewController {
     private func setupViews() {
         view.addSubview(profileImageView)
         view.addSubview(nameLabel)
-//        view.addSubview(themeView)
+        view.addSubview(themeView)
         setupConstrains()
     }
     
     private func setupConstrains() {
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-//        themeView.translatesAutoresizingMaskIntoConstraints = false
+        themeView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
             profileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
@@ -78,8 +78,19 @@ final class ProfileController: UIViewController {
             
             nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor)
+            nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor),
+            
+            themeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            themeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            themeView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30),
+            themeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
+    }
+}
+extension ProfileController: ThemeViewDelegate {
+    func updateColor() {
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        nameLabel.textColor = Theme.currentTheme.textColor
     }
 }
 
