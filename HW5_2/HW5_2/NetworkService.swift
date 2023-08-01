@@ -15,7 +15,7 @@ final class NetworkService {
             do {
                 let news = try
                 JSONDecoder().decode(NewsModel.self, from: data)
-                completion(news.result)
+                completion(news.results)
             } catch {
                 print(error)
             }

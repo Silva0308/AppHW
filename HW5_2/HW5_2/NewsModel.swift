@@ -7,7 +7,7 @@
 import Foundation
 
 struct NewsModel: Decodable {
-    var result: [News]
+    var results: [News]
 }
 
 struct News: Decodable, Identifiable {
