@@ -6,43 +6,26 @@
 //
 
 import UIKit
-final class ProfileController: UIViewController {
+    class ProfileController: UIViewController {
     
     private var networkService = NetworkService()
     private var profileImageView = UIImageView()
     
     private var nameLabel: UILabel = {
         var label = UILabel()
-        // label.textColor = Theme.currentTheme.textColor
+        label.backgroundColor = .gray
+        label.textColor = .blue
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
-    // private var themeView = ThemeView()
-    private var isUserProfile: Bool
     
-    init(name: String? = nil, photo: UIImage? = nil, isUserProfile: Bool) {
-        self.isUserProfile = isUserProfile
-        super.init(nibName: nil, bundle: nil)
-        nameLabel.text = name
-        profileImageView.image = photo
-//        themeView.delegate = self
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white // Theme.currentTheme.backgroundColor
+        view.backgroundColor = .white
         setupViews()
-        if isUserProfile {
             networkService.getProfileInfo{ [weak self] user in self?.updateData(model: user)}
-        } else {
-            themeView.isHidden = true
-        }
-       
     }
     
     func updateData(model: User?) {
@@ -62,14 +45,13 @@ final class ProfileController: UIViewController {
     private func setupViews() {
         view.addSubview(profileImageView)
         view.addSubview(nameLabel)
-//        view.addSubview(themeView)
         setupConstrains()
     }
     
     private func setupConstrains() {
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-//        themeView.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             profileImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
             profileImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
