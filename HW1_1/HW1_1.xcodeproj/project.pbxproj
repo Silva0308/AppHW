@@ -22,6 +22,8 @@
 		524CC9A92A6863D400F97E73 /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9A82A6863D400F97E73 /* FriendsModel.swift */; };
 		524CC9AB2A687C9600F97E73 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9AA2A687C9600F97E73 /* GroupsModel.swift */; };
 		524CC9AD2A687EF600F97E73 /* PhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9AC2A687EF600F97E73 /* PhotosModel.swift */; };
+		524CC9D42A7175FC00F97E73 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CC9D32A7175FC00F97E73 /* ProfileController.swift */; };
+		524CCA1D2A790B1200F97E73 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA1C2A790B1200F97E73 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		524CC9A82A6863D400F97E73 /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
 		524CC9AA2A687C9600F97E73 /* GroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsModel.swift; sourceTree = "<group>"; };
 		524CC9AC2A687EF600F97E73 /* PhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosModel.swift; sourceTree = "<group>"; };
+		524CC9D32A7175FC00F97E73 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		524CCA1C2A790B1200F97E73 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 				524CC9A82A6863D400F97E73 /* FriendsModel.swift */,
 				524CC9AC2A687EF600F97E73 /* PhotosModel.swift */,
 				524CC9AA2A687C9600F97E73 /* GroupsModel.swift */,
+				524CCA1C2A790B1200F97E73 /* UserModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				524CC98E2A5EF66C00F97E73 /* PhotoController.swift */,
+				524CC9D32A7175FC00F97E73 /* ProfileController.swift */,
 				524CC98A2A5EDA8400F97E73 /* FriendsController.swift */,
 				524CC9942A5F242900F97E73 /* GroupsController.swift */,
 			);
@@ -195,11 +201,13 @@
 				524CC9952A5F242900F97E73 /* GroupsController.swift in Sources */,
 				524CC9972A5F2C0300F97E73 /* GroupCell.swift in Sources */,
 				52121D2A2A591B5F00300A60 /* AppDelegate.swift in Sources */,
+				524CC9D42A7175FC00F97E73 /* ProfileController.swift in Sources */,
 				524CC98F2A5EF66C00F97E73 /* PhotoController.swift in Sources */,
 				524CC9AD2A687EF600F97E73 /* PhotosModel.swift in Sources */,
 				524CC98B2A5EDA8400F97E73 /* FriendsController.swift in Sources */,
 				524CC9AB2A687C9600F97E73 /* GroupsModel.swift in Sources */,
 				524CC98D2A5EDABE00F97E73 /* FriendCell.swift in Sources */,
+				524CCA1D2A790B1200F97E73 /* UserModel.swift in Sources */,
 				52121D2C2A591B5F00300A60 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
