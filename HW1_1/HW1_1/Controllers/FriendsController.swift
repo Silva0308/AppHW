@@ -20,6 +20,7 @@ class FriendsController : UITableViewController{
         tableView.register(FriendCell.self, forCellReuseIdentifier: "FriendCell")
         networkService.getFriends{ [weak self] friends in self?.models = friends
             DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
         }
     }
