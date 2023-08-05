@@ -9,9 +9,9 @@ import UIKit
 /// Screen with friend information
 final class FriendsController : UITableViewController{
     
-    private let networkService = NetworkService()
+    private let networkService: NetworkServiceProtocol = NetworkService()
     private var models: [Friend] = []
-    private var fileCache = FileCache()
+    private var fileCache: FileCacheProtocol = FileCache()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -10,16 +10,19 @@ import XCTest
 final class FriendsControllerTests: XCTestCase {
     private var friendsController: FriendsController!
     private var networkService: NetworkServiceSpy!
+    private var fileCache: FileCacheSpy!
     
     override func setUp() {
         super.setUp()
-        friendsController = FriendsController()
         networkService = NetworkServiceSpy()
+        fileCache = FileCacheSpy()
+        friendsController = FriendsController()
     }
     
     override func tearDown() {
         friendsController = nil
         networkService = nil
+        fileCache = nil
         super.tearDown()
     }
      

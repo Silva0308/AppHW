@@ -7,9 +7,14 @@
 
 import Foundation
 import CoreData
-
+protocol FileCacheProtocol {
+    func addFriends(friends: [Friend])
+    func fetchFriends() -> [Friend]
+    func fetchFriendDate() -> Date?
+    func addFriendDate()
+}
 /// Class wokrs with Core Data
-final class FileCache {
+final class FileCache: FileCacheProtocol {
     lazy var persistentContaner:
     NSPersistentContainer = {
         let persistentContaner = NSPersistentContainer(name: "DataModel")
