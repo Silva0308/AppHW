@@ -6,7 +6,11 @@
 //
 
 import Foundation
+/// Class hepls with Data transformation
 final class DateHelper {
+    /// Transforms Date to uslful format
+    /// - Parameter date: non formated date
+    /// - Returns: date in string
     static func getDate(date: Date?) -> String {
         guard let date else {
             return ""

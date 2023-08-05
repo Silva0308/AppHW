@@ -10,9 +10,10 @@ protocol ThemeViewDelegate: AnyObject {
     func updateColor()
 }
 
+/// Screen with themes
 final class ThemeView: UIView {
     weak var delegate: ThemeViewDelegate?
-    private var button1: UIButton = {
+    private var whiteButton: UIButton = {
         let button = UIButton()
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
@@ -20,7 +21,7 @@ final class ThemeView: UIView {
         return button
     }()
     
-    private var button2: UIButton = {
+    private var blueButton: UIButton = {
         let button = UIButton()
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
@@ -28,7 +29,7 @@ final class ThemeView: UIView {
         return button
     }()
     
-    private var button3: UIButton = {
+    private var greenButton: UIButton = {
         let button = UIButton()
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
@@ -39,9 +40,9 @@ final class ThemeView: UIView {
     init() {
         super.init(frame: .zero)
         backgroundColor = Theme.currentTheme.backgroundColor
-        button1.addTarget(self, action: #selector(tap1), for: .touchUpInside)
-        button2.addTarget(self, action: #selector(tap2), for: .touchUpInside)
-        button3.addTarget(self, action: #selector(tap3), for: .touchUpInside)
+        whiteButton.addTarget(self, action: #selector(tap1), for: .touchUpInside)
+        blueButton.addTarget(self, action: #selector(tap2), for: .touchUpInside)
+        greenButton.addTarget(self, action: #selector(tap3), for: .touchUpInside)
         setupViews()
     }
     
@@ -50,52 +51,52 @@ final class ThemeView: UIView {
     }
     
     private func setupViews() {
-        addSubview(button1)
-        addSubview(button2)
-        addSubview(button3)
+        addSubview(whiteButton)
+        addSubview(blueButton)
+        addSubview(greenButton)
         setupConstraints()
     }
     private func setupConstraints() {
-        button1.translatesAutoresizingMaskIntoConstraints = false
-        button2.translatesAutoresizingMaskIntoConstraints = false
-        button3.translatesAutoresizingMaskIntoConstraints = false
+        whiteButton.translatesAutoresizingMaskIntoConstraints = false
+        blueButton.translatesAutoresizingMaskIntoConstraints = false
+        greenButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            button1.centerYAnchor.constraint(equalTo: centerYAnchor),
-            button1.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button1.leftAnchor.constraint(equalTo: leftAnchor),
-            button1.rightAnchor.constraint(equalTo: rightAnchor),
+            whiteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            whiteButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            whiteButton.leftAnchor.constraint(equalTo: leftAnchor),
+            whiteButton.rightAnchor.constraint(equalTo: rightAnchor),
             
-            button2.bottomAnchor.constraint(equalTo: button1.topAnchor, constant: -20),
-            button2.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button2.leftAnchor.constraint(equalTo: leftAnchor),
-            button2.rightAnchor.constraint(equalTo: rightAnchor),
+            blueButton.bottomAnchor.constraint(equalTo: whiteButton.topAnchor, constant: -20),
+            blueButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            blueButton.leftAnchor.constraint(equalTo: leftAnchor),
+            blueButton.rightAnchor.constraint(equalTo: rightAnchor),
             
-            button3.topAnchor.constraint(equalTo: button1.bottomAnchor, constant: 20),
-            button3.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button3.leftAnchor.constraint(equalTo: leftAnchor),
-            button3.rightAnchor.constraint(equalTo: rightAnchor)
+            greenButton.topAnchor.constraint(equalTo: whiteButton.bottomAnchor, constant: 20),
+            greenButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            greenButton.leftAnchor.constraint(equalTo: leftAnchor),
+            greenButton.rightAnchor.constraint(equalTo: rightAnchor)
         ])
     }}
 
 private extension ThemeView {
+    /// Changes theme on white
     @objc func tap1() {
         Theme.currentTheme = WhiteTheme()
         backgroundColor = Theme.currentTheme.backgroundColor
         delegate?.updateColor()
-//        ThemeSaver.putData()
     }
+    /// Changes theme on blue
     @objc func tap2() {
         Theme.currentTheme = BlueTheme()
         backgroundColor = Theme.currentTheme.backgroundColor
         delegate?.updateColor()
-//        ThemeSaver.putData()
     }
     
+    /// Changes theme on green
     @objc func tap3() {
         Theme.currentTheme = GreenTheme()
         backgroundColor = Theme.currentTheme.backgroundColor
         delegate?.updateColor()
-//        ThemeSaver.putData()
     }
 }

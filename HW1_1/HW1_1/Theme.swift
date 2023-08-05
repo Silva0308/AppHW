@@ -14,6 +14,7 @@ enum AllAppTheme: String {
     case green
 }
 
+/// Theme fields protocol
 protocol ThemeProtocol {
     var backgroundColor: UIColor { get }
     var textColor: UIColor { get }
@@ -29,6 +30,7 @@ final class Theme {
     static var currentTheme: ThemeProtocol = WhiteTheme()
 }
 
+/// theme with white background
 final class WhiteTheme: ThemeProtocol {
     var backgroundColor: UIColor = .white
     var textColor: UIColor = .black
@@ -36,6 +38,7 @@ final class WhiteTheme: ThemeProtocol {
     
 }
 
+/// theme with blue background
 final class BlueTheme: ThemeProtocol {
     var backgroundColor: UIColor = UIColor(red: 228/255, green: 231/255, blue: 255, alpha: 1)
     var textColor: UIColor = .brown
@@ -43,6 +46,7 @@ final class BlueTheme: ThemeProtocol {
     
 }
 
+/// theme with green background
 final class GreenTheme: ThemeProtocol {
     var backgroundColor: UIColor = UIColor(red: 206/255, green: 1, blue: 162/255, alpha: 1)
     var textColor: UIColor = .brown

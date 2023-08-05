@@ -5,6 +5,7 @@
 //  Created by MacBook Pro on 19/07/23.
 //
 
+/// What is into photo responce
 struct PhotosModel: Decodable {
     var response: Photos
 }

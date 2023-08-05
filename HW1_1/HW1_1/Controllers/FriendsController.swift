@@ -6,7 +6,8 @@
 //
 
 import UIKit
-class FriendsController : UITableViewController{
+/// Screen with friend information
+final class FriendsController : UITableViewController{
     
     private let networkService = NetworkService()
     private var models: [Friend] = []
@@ -26,7 +27,7 @@ class FriendsController : UITableViewController{
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(update), for: .valueChanged)
         getFriends()
-        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,7 +35,7 @@ class FriendsController : UITableViewController{
         tableView.backgroundColor = Theme.currentTheme.backgroundColor
         tableView.reloadData()
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         models.count
     }
@@ -48,6 +49,7 @@ class FriendsController : UITableViewController{
         cell.tap = { [weak self]  text, photo in self?.navigationController?.pushViewController(ProfileController(name: text, photo: photo, isUserProfile: false), animated: true)}
         return cell
     }
+    /// getting friends from network or DB
     func getFriends() {
         networkService.getFriends { [weak self] result
             in
@@ -69,12 +71,14 @@ class FriendsController : UITableViewController{
 }
 
 private extension FriendsController {
+    /// Says if can't take data from net
     func showAlert(){
         let date = DateHelper.getDate(date: fileCache.fetchFriendDate())
-        let alert = UIAlertController(title: "Проблема с получением данных", message: "Данные актуальны на\(date)", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Проблема с получением данных", message: "Данные актуальны на \(date)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    /// Goes to user profile
     @objc func tap() {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
@@ -84,6 +88,7 @@ private extension FriendsController {
         navigationController?.pushViewController(ProfileController(isUserProfile: true), animated: false)
     }
     
+    /// Update info by pulling down
     @objc func update() {
         networkService.getFriends{ [weak self] result in switch result {
         case .success(let friends):

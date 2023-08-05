@@ -6,6 +6,7 @@
 //
 
 import UIKit
+/// Screen with profile photo and name
 final class ProfileController: UIViewController {
     
     private var networkService = NetworkService()
@@ -42,9 +43,11 @@ final class ProfileController: UIViewController {
         } else {
             themeView.isHidden = true
         }
-       
+        
     }
     
+    /// Gettint info from net
+    /// - Parameter model: User model
     func updateData(model: User?) {
         guard let model = model else {return}
         DispatchQueue.global().async {
@@ -88,6 +91,7 @@ final class ProfileController: UIViewController {
     }
 }
 extension ProfileController: ThemeViewDelegate {
+    /// changes color
     func updateColor() {
         view.backgroundColor = Theme.currentTheme.backgroundColor
         nameLabel.textColor = Theme.currentTheme.textColor

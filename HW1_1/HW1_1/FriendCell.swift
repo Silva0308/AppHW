@@ -6,15 +6,16 @@
 //
 
 import UIKit
-class FriendCell: UITableViewCell{
+/// Class for friend cell in table view
+final class FriendCell: UITableViewCell{
     
     var tap: ((String?, UIImage?) -> Void)?
     
     private var image : UIImageView = {
-            let image = UIImageView()
-            image.image = UIImage(systemName: "person")
-            return image
-        }()
+        let image = UIImageView()
+        image.image = UIImage(systemName: "person")
+        return image
+    }()
     
     private var onlineCircle: UIView = {
         let circle = UIView()
@@ -23,7 +24,7 @@ class FriendCell: UITableViewCell{
         return circle
     }()
     
-    private var label1: UILabel = {
+    private var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Name"
@@ -40,7 +41,7 @@ class FriendCell: UITableViewCell{
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(cellClick))
         addGestureRecognizer(recognizer)
         contentView.addSubview(image)
-        contentView.addSubview(label1)
+        contentView.addSubview(nameLabel)
         contentView.addSubview(onlineCircle)
         myConstr()
     }
@@ -48,8 +49,10 @@ class FriendCell: UITableViewCell{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    /// Updating friend informarion in cell
+    /// - Parameter model: Friend model
     func updateCell(model: Friend) {
-        label1.text = (model.firstName ?? "") + " " + (model.lastName ?? "")
+        nameLabel.text = (model.firstName ?? "") + " " + (model.lastName ?? "")
         if let online = model.online {
             let isOnline = online == 1
             if isOnline {
@@ -67,20 +70,20 @@ class FriendCell: UITableViewCell{
             }
         }
     }
-    func myConstr(){
+    private func myConstr(){
         image.translatesAutoresizingMaskIntoConstraints = false
-        label1.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         onlineCircle.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-           image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
-           image.heightAnchor.constraint(equalToConstant: 40),
+            image.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10),
+            image.heightAnchor.constraint(equalToConstant: 40),
             image.widthAnchor.constraint(equalTo: image.heightAnchor),
             
-            label1.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            label1.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 20),
-            label1.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            nameLabel.leftAnchor.constraint(equalTo: image.rightAnchor, constant: 20),
+            nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
             
             onlineCircle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             onlineCircle.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -10),
@@ -89,7 +92,8 @@ class FriendCell: UITableViewCell{
         ])
         
     }
+    /// Tap for get friend
     @objc private func cellClick() {
-        tap?(label1.text, image.image)
+        tap?(nameLabel.text, image.image)
     }
 }

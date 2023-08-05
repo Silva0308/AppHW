@@ -5,6 +5,7 @@
 //  Created by MacBook Pro on 19/07/23.
 //
 
+/// What is into group responce
 struct GroupsModel: Decodable {
     var response: Groups
 }
@@ -17,6 +18,7 @@ struct Group: Codable {
     var photo: String?
     var description: String?
     
+    /// how to decode
     enum CodingKeys: String, CodingKey {
         case id
         case name
