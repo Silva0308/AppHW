@@ -6,9 +6,15 @@
 //
 
 import Foundation
-
+protocol NetworkServiceProtocol {
+    func getFriends(completion: @escaping(Result<[Friend], Error>) -> Void)
+    func getGroups(completion: @escaping (Result<[Group], Error>) -> Void)
+    func getPhotos(completion: @escaping(([Photo]) -> Void))
+    func getProfileInfo(completion: @escaping(User?) -> Void)
+    
+}
 /// Class works with URL inquiries
-final class NetworkService {
+final class NetworkService: NetworkServiceProtocol {
     private let session = URLSession.shared
     static var token: String? = ""
     static var userId: String? = ""

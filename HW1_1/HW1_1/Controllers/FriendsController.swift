@@ -72,7 +72,7 @@ final class FriendsController : UITableViewController{
 
 private extension FriendsController {
     /// Says if can't take data from net
-    func showAlert(){
+    private func showAlert(){
         let date = DateHelper.getDate(date: fileCache.fetchFriendDate())
         let alert = UIAlertController(title: "Проблема с получением данных", message: "Данные актуальны на \(date)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))

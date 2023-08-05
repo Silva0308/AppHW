@@ -31,6 +31,7 @@
 		524CCA4A2A79ABA400F97E73 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA492A79ABA400F97E73 /* DateHelper.swift */; };
 		524CCA922A7E78BE00F97E73 /* HW1_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA912A7E78BE00F97E73 /* HW1_1Tests.swift */; };
 		524CCA992A7E7A8400F97E73 /* FriendsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA982A7E7A8400F97E73 /* FriendsControllerTests.swift */; };
+		524CCA9C2A7E992C00F97E73 /* NetworkServiceSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA9A2A7E992600F97E73 /* NetworkServiceSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		524CCA8F2A7E78BE00F97E73 /* HW1_1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW1_1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		524CCA912A7E78BE00F97E73 /* HW1_1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW1_1Tests.swift; sourceTree = "<group>"; };
 		524CCA982A7E7A8400F97E73 /* FriendsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsControllerTests.swift; sourceTree = "<group>"; };
+		524CCA9A2A7E992600F97E73 /* NetworkServiceSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				524CCA912A7E78BE00F97E73 /* HW1_1Tests.swift */,
+				524CCA9A2A7E992600F97E73 /* NetworkServiceSpy.swift */,
 				524CCA982A7E7A8400F97E73 /* FriendsControllerTests.swift */,
 			);
 			path = HW1_1Tests;
@@ -307,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524CCA9C2A7E992C00F97E73 /* NetworkServiceSpy.swift in Sources */,
 				524CCA922A7E78BE00F97E73 /* HW1_1Tests.swift in Sources */,
 				524CCA992A7E7A8400F97E73 /* FriendsControllerTests.swift in Sources */,
 			);
