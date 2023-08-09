@@ -16,7 +16,7 @@ final class FriendsControllerTests: XCTestCase {
         super.setUp()
         networkService = NetworkServiceSpy()
         fileCache = FileCacheSpy()
-        friendsController = FriendsController()
+        friendsController = FriendsController(networkService: networkService, models: [], fileCache: fileCache)
     }
     
     override func tearDown() {

@@ -9,9 +9,22 @@ import UIKit
 /// Screen with friend information
 final class FriendsController : UITableViewController{
     
-    private let networkService: NetworkServiceProtocol = NetworkService()
-    private var models: [Friend] = []
-    private var fileCache: FileCacheProtocol = FileCache()
+    private let networkService: NetworkServiceProtocol
+    private var models: [Friend]
+    private var fileCache: FileCacheProtocol
+    
+    //Передаем в инициализатор протоколы
+    
+    init(networkService: NetworkServiceProtocol, models: [Friend], fileCache: FileCacheProtocol) {
+        self.networkService = networkService
+        self.models = models
+        self.fileCache = fileCache
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

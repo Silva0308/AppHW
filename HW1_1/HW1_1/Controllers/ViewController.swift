@@ -36,7 +36,7 @@ final class ViewController: UIViewController {
     
     private func tap() {
         
-        let tab1 = UINavigationController(rootViewController: FriendsController())
+        let tab1 = UINavigationController(rootViewController: FriendsController(networkService: NetworkService(), models: [], fileCache: FileCache()))
         let tab2 = UINavigationController(rootViewController: GroupsController())
         let tab3 = UINavigationController(rootViewController: PhotoController(collectionViewLayout: UICollectionViewFlowLayout()))
         
