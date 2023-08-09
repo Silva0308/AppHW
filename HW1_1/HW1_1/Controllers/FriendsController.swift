@@ -19,7 +19,7 @@ final class FriendsController : UITableViewController{
         self.networkService = networkService
         self.models = models
         self.fileCache = fileCache
-        super.init()
+        super.init(style: .plain)
     }
     
     required init?(coder: NSCoder) {

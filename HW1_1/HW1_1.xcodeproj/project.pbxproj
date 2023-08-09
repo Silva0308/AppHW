@@ -29,7 +29,6 @@
 		524CCA462A79848E00F97E73 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA442A79848E00F97E73 /* DataModel.xcdatamodeld */; };
 		524CCA482A79865400F97E73 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA472A79865400F97E73 /* FileCache.swift */; };
 		524CCA4A2A79ABA400F97E73 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA492A79ABA400F97E73 /* DateHelper.swift */; };
-		524CCA922A7E78BE00F97E73 /* HW1_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA912A7E78BE00F97E73 /* HW1_1Tests.swift */; };
 		524CCA992A7E7A8400F97E73 /* FriendsControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA982A7E7A8400F97E73 /* FriendsControllerTests.swift */; };
 		524CCA9C2A7E992C00F97E73 /* NetworkServiceSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA9A2A7E992600F97E73 /* NetworkServiceSpy.swift */; };
 		524CCA9F2A7EDB0700F97E73 /* FileCacheSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CCA9D2A7EDAFB00F97E73 /* FileCacheSpy.swift */; };
@@ -71,7 +70,6 @@
 		524CCA472A79865400F97E73 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		524CCA492A79ABA400F97E73 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		524CCA8F2A7E78BE00F97E73 /* HW1_1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW1_1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		524CCA912A7E78BE00F97E73 /* HW1_1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW1_1Tests.swift; sourceTree = "<group>"; };
 		524CCA982A7E7A8400F97E73 /* FriendsControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsControllerTests.swift; sourceTree = "<group>"; };
 		524CCA9A2A7E992600F97E73 /* NetworkServiceSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceSpy.swift; sourceTree = "<group>"; };
 		524CCA9D2A7EDAFB00F97E73 /* FileCacheSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheSpy.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 		524CCA902A7E78BE00F97E73 /* HW1_1Tests */ = {
 			isa = PBXGroup;
 			children = (
-				524CCA912A7E78BE00F97E73 /* HW1_1Tests.swift */,
 				524CCA9A2A7E992600F97E73 /* NetworkServiceSpy.swift */,
 				524CCA9D2A7EDAFB00F97E73 /* FileCacheSpy.swift */,
 				524CCA982A7E7A8400F97E73 /* FriendsControllerTests.swift */,
@@ -315,7 +312,6 @@
 			files = (
 				524CCA9C2A7E992C00F97E73 /* NetworkServiceSpy.swift in Sources */,
 				524CCA9F2A7EDB0700F97E73 /* FileCacheSpy.swift in Sources */,
-				524CCA922A7E78BE00F97E73 /* HW1_1Tests.swift in Sources */,
 				524CCA992A7E7A8400F97E73 /* FriendsControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
